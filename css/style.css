@@ -1,0 +1,47 @@
+body{
+  background-color: gray;
+}
+
+button{
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+h1{
+  color: red;
+  text-align: center;
+}
+
+img{
+  height: 500px;
+  width: 800px;
+  padding-left: 40px;
+}
+
+#tekst{
+  padding-left: 40px;
+}
+
+#option2{
+  display: none;
+}
+
+#option3{
+  display: none;
+}
+
+#option4{
+  display: none;
+}
+
+#option5{
+  display: none;
+}
+
+#option6{
+  display: none;
+}
+
+#option7{
+  display: none;
+}
