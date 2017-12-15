@@ -9,6 +9,10 @@ var option5 = document.getElementById("option5");
 var option6 = document.getElementById("option6");
 var option7 = document.getElementById("option7");
 var gotkeys = false;
+var phone = false;
+var computer = false;
+var food = false;
+var instrument = false;
 
 
 function Startgame() {
@@ -20,7 +24,7 @@ function Startgame() {
   option2.innerHTML = "Go to the corridor";
   option2.setAttribute("onclick", "corridor()");
   option3.innerHTML = "To the car";
-  option3.setAttribute("onclick", "(gotkeys)? car(): gameover()");
+  option3.setAttribute("onclick", "(gotkeys)? car(): livingroom()");
   option4.innerHTML = "To the bedroom";
   option4.setAttribute("onclick", "bedroom()");
   option1.style.display = "block";
@@ -43,7 +47,7 @@ function livingroom() {
   option4.innerHTML = "To the bedroom";
   option4.setAttribute("onclick", "bedroom()");
   option3.innerHTML = "To the car";
-  option3.setAttribute("onclick", "(gotkeys)? car(): gameover()");
+  option3.setAttribute("onclick", "(gotkeys)? car(): livingroom()");
   option1.style.display = "block";
   option2.style.display = "block";
   option3.style.display = "block";
@@ -56,7 +60,7 @@ function livingroom() {
 function car() {
   image.src = "foto/auto.jpg"
   title.innerHTML = "Car"
-  tekst.innerHTML = ""
+  tekst.innerHTML = "Where do you want to go?"
   option1.innerHTML = "Go to the music shop";
   option1.setAttribute("onclick", "musicshop()");
   option2.innerHTML = "Go to the supermarket";
@@ -87,7 +91,7 @@ function bedroom() {
   option3.innerHTML = "Go to home";
   option3.setAttribute("onclick", "home()");
   option4.innerHTML = "Go to the car";
-  option4.setAttribute("onclick", "(gotkeys)? car(): gameover()");
+  option4.setAttribute("onclick", "(gotkeys)? car(): bedroom()");
   option1.style.display = "block";
   option2.style.display = "block";
   option3.style.display = "block";
@@ -109,6 +113,7 @@ function musicshop() {
   option3.setAttribute("onclick", "gameover()");
   option4.innerHTML = "Buy keyboard";
   option4.setAttribute("onclick", "keyboard()");
+  if(instrument == true){
   option5.innerHTML = "Go to the car";
   option5.setAttribute("onclick", "car()");
   option1.style.display = "block";
@@ -118,6 +123,10 @@ function musicshop() {
   option5.style.display = "block";
   option6.style.display = "none";
   option7.style.display = "none";
+  }
+  else {
+    gameover()
+  }
 }
 
 function gameover() {
@@ -137,14 +146,14 @@ function corridor() {
   image.src = "foto/gang.png"
   title.innerHTML = "Corridor"
   tekst.innerHTML = "Ready to go."
-  option2.innerHTML = "Hook hang your keys";
-  option2.setAttribute("onclick", "sleutels()");
+  option2.innerHTML = "Get your keys.";
+  option2.setAttribute("onclick", "(gotkeys)? ()");
   option3.innerHTML = "Go to the music shop";
   option3.setAttribute("onclick", "musicshop()");
   option4.innerHTML = "Go to the living room";
   option4.setAttribute("onclick", "livingroom()");
   option1.innerHTML = "Go to the car";
-  option1.setAttribute("onclick", "(gotkeys)? car(): gameover()");
+  option1.setAttribute("onclick", "(gotkeys)? car(): corridor()");
   sleutels.setAttribute("onclick", "getkeys()");
   option1.style.display = "block";
   option2.style.display = "block";
@@ -165,7 +174,7 @@ function supermarket() {
   title.innerHTML = "Supermarket"
   tekst.innerHTML = "You've to eat and drink some thing. So you can buy food or not. You can't drive further with your car. You can't drive to home because you've forget to refuel. So you have to take the bus."
   option1.innerHTML = "Get some food and drink";
-  option1.setAttribute("onclick", "foodanddrink()");
+  option1.setAttribute("onclick", "setFoodTrue()");
   option2.innerHTML = "Go to home";
   option2.setAttribute("onclick", "gameover()");
   option3.innerHTML = "Go to the bus";
@@ -191,14 +200,15 @@ function kitchen() {
   option2.setAttribute("onclick", "home()");
   option3.innerHTML = "Go to the supermarket";
   option3.setAttribute("onclick", "supermarket()");
+  if(phone == true){
   option4.innerHTML = "Go to Dordrecht Centraal";
-  option4.setAttribute("onclick", "dordrechtcentraal()");
+  option4.setAttribute("onclick", "(phone)? dordrechtcentraal() : kitchen() ");
   option5.innerHTML = "Go to Zuidplein";
-  option5.setAttribute("onclick", "gameover()");
+  option5.setAttribute("onclick", "(phone)? zuidplein() : gameover()");
   option6.innerHTML = "Go to Amsterdam";
-  option6.setAttribute("onclick", "gameover()");
+  option6.setAttribute("onclick", "(phone)? amsterdam() : gameover()");
   option7.innerHTML = "Go to Rotterdam Centraal";
-  option7.setAttribute("onclick", "gameover()");
+  option7.setAttribute("onclick", "(phone) rotterdam() : gameover()");
   option1.style.display = "block";
   option2.style.display = "block";
   option3.style.display = "block";
@@ -206,6 +216,10 @@ function kitchen() {
   option5.style.display = "block";
   option6.style.display = "block";
   option7.style.display = "block";
+  }
+  else {
+    gameover();
+  }
 }
 
 function home() {
@@ -228,6 +242,7 @@ function home() {
 }
 
 function singingschool() {
+  if(computer == true){
   image.src = "foto/zangschool.jpg"
   title.innerHTML = "Singing School"
   tekst.innerHTML = ""
@@ -244,6 +259,10 @@ function singingschool() {
   option5.style.display = "none";
   option6.style.display = "none";
   option7.style.display = "none";
+  }
+  else {
+    gameover();
+  }
 }
 
 function busstop() {
@@ -285,11 +304,12 @@ function cityhall() {
 }
 
 function dordrechtcentraal() {
+  if(food == true){
   image.src = "foto/dortcentraal.jpg"
   title.innerHTML = "Dordrecht Centraal"
   tekst.innerHTML = ""
   option1.innerHTML = "Go play music";
-  option1.setAttribute("onclick");
+  option1.setAttribute("onclick", "youwin()");
   option2.innerHTML = "Go to the kitchen";
   option2.setAttribute("onclick", "kitchen()");
   option3.innerHTML = "Go to the bus stop";
@@ -301,6 +321,10 @@ function dordrechtcentraal() {
   option5.style.display = "none";
   option6.style.display = "none";
   option7.style.display = "none";
+}
+  else {
+    gameover();
+  }
 }
 
 function phone() {
@@ -345,6 +369,7 @@ function computer() {
   option5.style.display = "block";
   option6.style.display = "none";
   option7.style.display = "none";
+  computer = true;
 }
 
 function dort(){
@@ -372,7 +397,7 @@ function rotterdam() {
   title.innerHTML = "Rotterdam"
 }
 
-function denhaag() {
+function denhaag(){
   image.src = "foto/denhaag.png"
   title.innerHTML = "Den Haag"
 }
@@ -380,4 +405,25 @@ function denhaag() {
 function utrecht() {
   image.src = "foto/utrecht.jpg"
   title.innerHTML = "Utrecht"
+}
+
+function youwin() {
+  image.src = "foto/youwin.jpg"
+  title.innerHTML = "You're now a musician great job."
+  tekst.innerHTML = "This is the end of the game."
+}
+
+function phone() {
+  phone = true;
+  phone.style.display = "none";
+}
+
+function setFoodTrue() {
+  food = true;
+  food.style.display = "none";
+}
+
+function instrument() {
+  instrument = true;
+  instrument.style.display = "none";
 }
